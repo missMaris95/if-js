@@ -1,3 +1,3 @@
-    let text = 'hello world' ;
+const text = "hello world";
 
-console.log  (text );
+console.log(text);
