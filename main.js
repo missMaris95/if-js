@@ -35,7 +35,6 @@
 // const num2 = 15;
 // console.log(min(num1, num2));
 
-
 //function expression +if...else
 // const max = function ( x,y ){
 //     if ( x>y ) {
@@ -65,22 +64,23 @@
 
 //7
 const array = [5, 15, 10, 40, 38, 0, 65, 60, 71, 100];
-replay(array);
 
+function replay(notZero) {
+  const result = [];
 
-function replay(notZero){
-    for (let i =0; i<array.length; i++){
-        if (notZero[i]===0){
-            notZero[i]='zero';
-        } else if (notZero[i]%10 ===0){
-            notZero[i]=notZero[i].splice(0,1,'zero');
-            console.log(notZero[i]);
-        }
-    }
-    console.log(array);
+  for (let i = 0; i < array.length; i++) {
+    const int = notZero[i] / 10;
+    if (notZero[i] === 0) {
+      result.push('zero');
+    } else if (Number.isInteger(int / 10)) {
+      result.push(int / 10 + 'zero' + 'zero');
+    } else if (Number.isInteger(int)) {
+      result.push(int + 'zero');
+    } else result.push(notZero[i]);
+  }
+
+  return result;
 }
 
-
-
-
-
+const arr1 = replay(array);
+console.log(arr1);
