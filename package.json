@@ -15,6 +15,7 @@
     "@babel/core": "^7.23.3",
     "@babel/preset-env": "^7.23.3",
     "@ngneat/falso": "^7.1.1",
+    "@types/cors": "^2.8.17",
     "babel-jest": "^29.7.0",
     "eslint": "^8.52.0",
     "husky": "^8.0.3",
