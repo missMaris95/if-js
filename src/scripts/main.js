@@ -8,27 +8,79 @@ function sum(n1) {
 }
 
 console.log(sum(5)(2));
-
-//*********************************************************************************
+//
+// //*********************************************************************************
 
 const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 const text1 = document.getElementById('text1');
 const text2 = document.getElementById('text2');
 const text3 = document.getElementById('text3');
 
-function nextColor() {
-  for (let i = 0; i < colors.length; i++) {
-    return (event) => {
-      const e = event.target;
-      e.style.color = colors[i];
-      if (i >= colors.length) {
-        return (i = 0);
-      }
-      return [i++];
-    };
+const nextColor = () => {
+  let i = 0;
+  return function (event) {
+    event.target.style.color = colors[i];
+    i++;
+    if (i > colors.length) {
+      i = 0;
+    }
+  };
+};
+
+const chengeColor1 = nextColor();
+const chengeColor2 = nextColor();
+const chengeColor3 = nextColor();
+
+text1.addEventListener('click', chengeColor1);
+text2.addEventListener('click', chengeColor2);
+text3.addEventListener('click', chengeColor3);
+
+//******************
+function getTypeNumner(num) {
+  if (num % 2 === 0) {
+    return 'Четное число:' + num;
   }
+  return 'Nechетное число:' + num;
+}
+console.log(getTypeNumner(3));
+
+//************************
+function findSmallestInt(...nums) {
+  let smollestNum = nums[0];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] < smollestNum) {
+      smollestNum = nums[i];
+    }
+  }
+  return smollestNum;
 }
 
-text1.addEventListener('click', nextColor());
-text2.addEventListener('click', nextColor());
-text3.addEventListener('click', nextColor());
+console.log(findSmallestInt(10, 5, 4, 18, 6));
+
+//*****************
+function countVowels(str) {
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  let glasn = 0;
+  for (let i = 0; i < str.length; i++) {
+    for (let j = 0; j < str.length; j++) {
+      if (str[i] === vowels[j]) {
+        glasn++;
+      }
+    }
+  }
+  console.log(glasn);
+  return glasn;
+}
+
+countVowels('street');
+
+//*****
+const summ = (n) => {
+  if (n !== 1) {
+    return n * summ(n - 1);
+  } else {
+    return 1;
+  }
+};
+
+console.log(summ(5));
