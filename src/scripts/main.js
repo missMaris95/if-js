@@ -5,55 +5,48 @@
 // и приводить ее к поставленному в задании формату.
 
 //Вариант 1 через регулярные выражения
-  const data1 = '2025-11-05';
+const data1 = '2025-11-05';
 //  const re =/[(\d)+\b-]+/; //без группы
 //   const re = /(\d+)\b-(\d+)\b-(\d+)/ //with group
-  const re = /(?<year>\d+)\D(?<month>\d+)\D(?<day>\d+)/; //with name group
-  const revers = data1.replace(re,'$<day>.$<month>.$<year>');
+const re = /(?<year>\d+)\D(?<month>\d+)\D(?<day>\d+)/; //with name group
+const revers = data1.replace(re, '$<day>.$<month>.$<year>');
 
 console.log(revers);
 
 //Вариант 2 через методы строк
 const data2 = '2025-11-05';
-const reversDate = function (str){
-    return str.split('-').reverse().join('.');
+const reversDate = function (str) {
+  return str.split('-').reverse().join('.');
 };
 
 console.log(reversDate(data2));
 
-
-
 // //Вариант 3
 const data3 = '2025-11-05';
-function revDate(str){
-    const arr = str.split('-');
-    const arrRevers = arr.reverse();
-    return  arrRevers.join('.');
+function revDate(str) {
+  const arr = str.split('-');
+  const arrRevers = arr.reverse();
+  return arrRevers.join('.');
 }
 
 console.log(revDate(data3));
 
 //вариант 4
 const data4 = '2025-11-05';
-function reversData(str){
-    const year = str.slice(0,4);
-    const month = str.slice(5,7);
-    const day = str.slice(-2);
-    return  day+ '.' +month+ '.' +year;
+function reversData(str) {
+  const year = str.slice(0, 4);
+  const month = str.slice(5, 7);
+  const day = str.slice(-2);
+  return day + '.' + month + '.' + year;
 }
 
 console.log(reversData(data4));
-
-
 
 //Поиск объектов размещения:
 // дан массив;
 // напишите функцию поиска, которая будет принимать строку;
 // по полученной строке найдите все совпадения в массиве;
 // верните список строк в формате: страна, город, отель.
-
-
-
 
 const data = [
   {
@@ -98,20 +91,14 @@ const data = [
   },
 ];
 
-
-
-const word = 'Germany';
-function searchStr(str){
-    const result = [];
-    for (let i=0; i<str.length; i++){
-        if (data[i].country === word || data[i].city === word || data[i].hotel === word){
-            result.push(data[i].country+' '+ data[i].city+' '+ data[i].hotel);
-        }
+function searchStr(array, word) {
+  const result = [];
+  for (let i = 0; i < array.length; i++) {
+    if (data[i].country === word || data[i].city === word || data[i].hotel === word) {
+      result.push(data[i].country + ' ' + data[i].city + ' ' + data[i].hotel);
     }
-    return result;
+  }
+  return result;
 }
 
-console.log(searchStr(data));
-
-
-
+console.log(searchStr(data, 'Ourika'));
