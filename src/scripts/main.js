@@ -94,8 +94,14 @@ const data = [
 function searchStr(array, word) {
   const result = [];
   for (let i = 0; i < array.length; i++) {
-    if (data[i].country === word || data[i].city === word || data[i].hotel === word) {
-      result.push(data[i].country + ' ' + data[i].city + ' ' + data[i].hotel);
+    if (
+      array[i].country === word ||
+      array[i].city === word ||
+      array[i].hotel === word
+    ) {
+      result.push(
+        array[i].country + ' ' + array[i].city + ' ' + array[i].hotel,
+      );
     }
   }
   return result;
