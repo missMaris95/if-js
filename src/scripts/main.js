@@ -218,29 +218,25 @@ console.log(search(hotels, 'Germany'));
 //     Ukraine: ['Kyiv']
 // }
 
-
-const searchCountry = function (array){
+const searchCountry = function (array) {
   const result = [];
   array.forEach((i) => {
-    result.push(i.country+ ':'+ i.city);
+    result.push(i.country + ':' + i.city);
   });
   return result;
-   const groupCountry = function (result){
-     const group = [];
-     result.forEach(i =>{
-       if (i.country === i.country){
-         group.push();
-         console.log(group);
-       }
-     });
-     return group;
-   };
-   console.log(groupCountry(result));
+  // const groupCountry = function (result) {
+  //   const group = [];
+  //   result.forEach((i) => {
+  //     if (i.country === i.country) {
+  //       group.push();
+  //       console.log(group);
+  //     }
+  //   });
+  //   return group;
+  // };
+  // console.log(groupCountry(result));
 };
 console.log(searchCountry(hotels));
-
-
-
 
 // const serchCountry = function (array){
 //   let result = [];
@@ -250,7 +246,6 @@ console.log(searchCountry(hotels));
 //   });
 // };
 // console.log(serchCountry(hotels));
-
 
 // // Преобразование формата даты:
 // //     в переменной date лежит дата в формате '2020-11-26';
@@ -362,3 +357,42 @@ console.log(searchCountry(hotels));
 // }
 //
 // console.log(searchStr(data, 'Ourika'));
+
+// Дополнительные задачки
+function returnOne(str){
+  return str[0];
+}
+
+console.log(returnOne('Mariya'));
+//*****************убрать пробельные символы в начале и конце строки
+function getNotBackspace(str){
+  return str.trim();
+}
+console.log(getNotBackspace(' Hello world! '));
+//*******************вернуть строку кот. повторяется 3 раза
+function repeateStr(str,numb){
+  return str.repeat(numb);
+}
+console.log(repeateStr('Mariya',3));
+//******************фунц кот. удаляет первый и последний элемент
+function sliceStr(str){
+  return str.slice(1,-1);
+}
+console.log(sliceStr('Mariya'));
+//*******************
+function searchWord(str){
+  return str.replaceAll('not','***');
+}
+console.log(searchWord('To be or not to be not not'));
+//****************
+function bigWord(str){
+  return str.toUpperCase();
+}
+
+console.log(bigWord('Mariya'));
+//**********************
+function leveling(str){
+ return str.split(',');
+}
+
+console.log(leveling('sasinovichmria@gmail.com, vladgurlenia@gmail.com, 1234567789@gmail.com'));
