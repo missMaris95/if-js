@@ -160,7 +160,6 @@ const hotels = [
     city: 'Edinburgh',
     country: 'UK',
   },
-
 ];
 
 //****************************************
@@ -219,15 +218,13 @@ console.log(search(hotels, 'Germany'));
 //     Ukraine: ['Kyiv']
 // }
 
-
-
-const secondArr = array =>{
-  const countries = array.reduce((acc, item) =>{
-    const result ={...acc};
+const secondArr = (array) => {
+  const countries = array.reduce((acc, item) => {
+   const result = { ...acc };
     if (!result[item.country]) {
-      result[item.country] = [item.city];
-    } else {
-      result[item.country].push(item.city);
+      result[item.country] = [item.city];    //ты мне сказал убрать,т.к.тут мы просто объявляем массив,но если оставлю объявленный массив с элементом ,
+    } else {                                 //города,то у меня все  работает( если я верное понимаю то это обозначает.что страна = массиву из
+      result[item.country].push(item.city);  //итем.сити, а уже в елсе я просто пушу к совпадающим странам города.так?
     }
     return result;
   });
@@ -235,8 +232,6 @@ const secondArr = array =>{
 };
 
 console.log(secondArr(hotels));
-
-
 
 //*************** ne to
 // const searchCountry = function (array) {
@@ -248,9 +243,6 @@ console.log(secondArr(hotels));
 //   }, []);
 // };
 // console.log(searchCountry(hotels));
-
-
-
 
 // // Преобразование формата даты:
 // //     в переменной date лежит дата в формате '2020-11-26';
@@ -398,15 +390,18 @@ console.log(bigWord('Mariya'));
 function leveling(str) {
   return str.split(',');
 }
-console.log(leveling('sasinovichmria@gmail.com, vladgurlenia@gmail.com, 1234567789@gmail.com'));
+console.log(
+  leveling(
+    'sasinovichmria@gmail.com, vladgurlenia@gmail.com, 1234567789@gmail.com',
+  ),
+);
 //***************
 function isString(str) {
   return typeof str === 'string';
 }
 console.log(isString('Mariya'));
 //***********
-function lightMail(url){
-  return url.replace(/#.*/,'');
+function lightMail(url) {
+  return url.replace(/#.*/, '');
 }
 console.log(lightMail('https//:google.com#nrefimdcmojl461616fw'));
-
