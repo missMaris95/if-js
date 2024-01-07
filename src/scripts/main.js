@@ -198,33 +198,16 @@ console.log(search(hotels, 'Germany'));
 //
 // console.log(string(hotels,'Germany'));
 
-// Поиск объектов размещения:
-//     дан массив;
-// напишите функцию поиска, которая будет принимать строку;
-// по полученной строке найдите все совпадения в массиве по любому из полей;
-// верните масcив строк в формате: страна, город, отель;
-// зная, как работать с массивами, сократите вашу функцию, избавившись от цикла for.
-
 //7.
-// Сопоставьте страны с городами из массива:
-//     дан массив;
-// напишите функцию, которая выберет все уникальные страны и сопоставит с ними города;
-// в консоли должен быть выведен примерно такой результат:
-// {
-//   Australia: ['Sydney'],
-//       Germany: ['Berlin', 'Hamburg'],
-//     Italy: ['Florence', 'Rome'],
-//     USA: ['Chicago', 'Hawaii', 'Miami'],
-//     Ukraine: ['Kyiv']
-// }
 
 const secondArr = (array) => {
   const countries = array.reduce((acc, item) => {
-   const result = { ...acc };
+    const result = { ...acc };
     if (!result[item.country]) {
-      result[item.country] = [item.city];    //ты мне сказал убрать,т.к.тут мы просто объявляем массив,но если оставлю объявленный массив с элементом ,
-    } else {                                 //города,то у меня все  работает( если я верное понимаю то это обозначает.что страна = массиву из
-      result[item.country].push(item.city);  //итем.сити, а уже в елсе я просто пушу к совпадающим странам города.так?
+      result[item.country] = [];
+    }
+    if (!result[item.country].includes(item.city)){
+      result[item.country].push(item.city);
     }
     return result;
   });
@@ -233,175 +216,156 @@ const secondArr = (array) => {
 
 console.log(secondArr(hotels));
 
-//*************** ne to
-// const searchCountry = function (array) {
-//   return array.reduce((acc, item) => {
-//    if (array.country === array.country){
-//      acc.push(item.city);
-//    }
-//    return [...acc];
-//   }, []);
-// };
-// console.log(searchCountry(hotels));
+//8
+// Календарный месяц:
+// создайте функцию getCalendarMonth, которая принимает количество дней в месяце, количество дней в неделе и день недели,
+// на который выпадает первый день месяца;
+// свободные дни (до первого дня месяца и после последнего дня месяца, пока считаем, что в каждом месяце равное количество дней)
+// заполните днями предыдущего месяца или последующего;
+// выбросьте ошибку, если переданный день недели больше, чем количество дней.
+// пример:
 
-// // Преобразование формата даты:
-// //     в переменной date лежит дата в формате '2020-11-26';
-// // преобразуйте эту дату в формат '26.11.2020';
-// // функция должна быть универсальной, т.е. принимать любую дату
-// // и приводить ее к поставленному в задании формату.
+    //const daysInMonth = 30;
+    //const daysInWeek = 7;
+    //const dayOfWeek = 4; // в моем примере понедельник равен 0. У вас может отличаться
+    // const calendarMonth = getCalendarMonth(daysInMonth, daysInWeek, dayOfWeek);
+
+// console.log(calendarMonth);
+/* result:
+[
+  [27, 28, 29, 30, 1, 2, 3]
+  [4, 5, 6, 7, 8, 9, 10]
+  [11, 12, 13, 14, 15, 16, 17]
+  [18, 19, 20, 21, 22, 23, 24]
+  [25, 26, 27, 28, 29, 30, 1]
+]
+*/
+
+
+// const daysInMonth = 30;+
+// const daysInWeek = 7;+
+// const dayOfWeek = 4;
+// function getAr(days, week, dayOfWeek){
+//     const sevenDay = [];
+//     const newArr = new Array(days).fill(0).map((el,i) => i+1);
+//     console.log(newArr);
+//     const temp =[];
+//      const arrInArr = newArr.map(() => {
+//          return temp.concat(newArr.splice(0,dayOfWeek));
+//      });
+//      console.log(arrInArr);
 //
-// //Вариант 1 через регулярные выражения
-// const data1 = '2025-11-05';
-// //  const re =/[(\d)+\b-]+/; //без группы
-// //   const re = /(\d+)\b-(\d+)\b-(\d+)/ //with group
-// const re = /(?<year>\d+)\D(?<month>\d+)\D(?<day>\d+)/; //with name group
-// const revers = data1.replace(re, '$<day>.$<month>.$<year>');
-//
-// console.log(revers);
-//
-// //Вариант 2 через методы строк
-// const data2 = '2025-11-05';
-// const reversDate = function (str) {
-//   return str.split('-').reverse().join('.');
-// };
-//
-// console.log(reversDate(data2));
-//
-// // //Вариант 3
-// const data3 = '2025-11-05';
-// function revDate(str) {
-//   const arr = str.split('-');
-//   const arrRevers = arr.reverse();
-//   return arrRevers.join('.');
-// }
-//
-// console.log(revDate(data3));
-//
-// //вариант 4
-// const data4 = '2025-11-05';
-// function reversData(str) {
-//   const year = str.slice(0, 4);
-//   const month = str.slice(5, 7);
-//   const day = str.slice(-2);
-//   return day + '.' + month + '.' + year;
-// }
-//
-// console.log(reversData(data4));
-//
-// //Поиск объектов размещения:
-// // дан массив;
-// // напишите функцию поиска, которая будет принимать строку;
-// // по полученной строке найдите все совпадения в массиве;
-// // верните список строк в формате: страна, город, отель.
-//
-// const data = [
-//   {
-//     country: 'Russia',
-//     city: 'Saint Petersburg',
-//     hotel: 'Hotel Leopold',
-//   },
-//   {
-//     country: 'Spain',
-//     city: 'Santa Cruz de Tenerife',
-//     hotel: 'Apartment Sunshine',
-//   },
-//   {
-//     country: 'Slowakia',
-//     city: 'Vysokie Tatry',
-//     hotel: 'Villa Kunerad',
-//   },
-//   {
-//     country: 'Germany',
-//     city: 'Berlin',
-//     hotel: 'Hostel Friendship',
-//   },
-//   {
-//     country: 'Indonesia',
-//     city: 'Bali',
-//     hotel: 'Ubud Bali Resort&SPA',
-//   },
-//   {
-//     country: 'Netherlands',
-//     city: 'Rotterdam',
-//     hotel: 'King Kong Hostel',
-//   },
-//   {
-//     country: 'Marocco',
-//     city: 'Ourika',
-//     hotel: 'Rokoko Hotel',
-//   },
-//   {
-//     country: 'Germany',
-//     city: 'Berlin',
-//     hotel: 'Hotel Rehberge Berlin Mitte',
-//   },
-// ];
-//
-// function searchStr(array, word) {
-//   const result = [];
-//   for (let i = 0; i < array.length; i++) {
-//     if (
-//       array[i].country === word ||
-//       array[i].city === word ||
-//       array[i].hotel === word
-//     ) {
-//       result.push(
-//         array[i].country + ' ' + array[i].city + ' ' + array[i].hotel,
-//       );
+//      function temps (arr,num){
+//         const copyArr =[...arr];
+//          console.log(copyArr);
+//         return arr.splice(0,num);
 //     }
-//   }
-//   return result;
+//     console.log(temps(newArr,1));
+//     // const arrInArr = newArr.map((el,i) => {
+//     //     if (i===0){
+//     //         return newArr.slice(0,dayOfWeek);
+//     //     }
+//     // });
+//     // console.log(arrInArr);
+//     // const numbArr = newArr.map((el,i,ar)=>{
+//     //     const arrAr =[];
+//     //     if (){
+//     //         return newArr.slice(0,7);
+//     //     }
+//     // });
+//     // console.log(numbArr);
 // }
 //
-// console.log(searchStr(data, 'Ourika'));
+// console.log(getAr(30,4, 7));
+
+
 
 // Дополнительные задачки
-function returnOne(str) {
-  return str[0];
-}
-
-console.log(returnOne('Mariya'));
-//*****************убрать пробельные символы в начале и конце строки
-function getNotBackspace(str) {
-  return str.trim();
-}
-console.log(getNotBackspace(' Hello world! '));
-//*******************вернуть строку кот. повторяется 3 раза
-function repeateStr(str, numb) {
-  return str.repeat(numb);
-}
-console.log(repeateStr('Mariya', 3));
-//******************фунц кот. удаляет первый и последний элемент
-function sliceStr(str) {
-  return str.slice(1, -1);
-}
-console.log(sliceStr('Mariya'));
-//*******************
-function searchWord(str) {
-  return str.replaceAll('not', '***');
-}
-console.log(searchWord('To be or not to be not not'));
-//****************
-function bigWord(str) {
-  return str.toUpperCase();
-}
-console.log(bigWord('Mariya'));
-//**********************
-function leveling(str) {
-  return str.split(',');
-}
-console.log(
-  leveling(
-    'sasinovichmria@gmail.com, vladgurlenia@gmail.com, 1234567789@gmail.com',
-  ),
-);
-//***************
-function isString(str) {
-  return typeof str === 'string';
-}
-console.log(isString('Mariya'));
-//***********
-function lightMail(url) {
-  return url.replace(/#.*/, '');
-}
-console.log(lightMail('https//:google.com#nrefimdcmojl461616fw'));
+// function returnOne(str) {
+//   return str[0];
+// }
+//
+// console.log(returnOne('Mariya'));
+// //*****************убрать пробельные символы в начале и конце строки
+// function getNotBackspace(str) {
+//   return str.trim();
+// }
+// console.log(getNotBackspace(' Hello world! '));
+// //*******************вернуть строку кот. повторяется 3 раза
+// function repeateStr(str, numb) {
+//   return str.repeat(numb);
+// }
+// console.log(repeateStr('Mariya', 3));
+// //******************фунц кот. удаляет первый и последний элемент
+// function sliceStr(str) {
+//   return str.slice(1, -1);
+// }
+// console.log(sliceStr('Mariya'));
+// //*******************
+// function searchWord(str) {
+//   return str.replaceAll('not', '***');
+// }
+// console.log(searchWord('To be or not to be not not'));
+// //****************
+// function bigWord(str) {
+//   return str.toUpperCase();
+// }
+// console.log(bigWord('Mariya'));
+// //**********************
+// function leveling(str) {
+//   return str.split(',');
+// }
+// console.log(
+//   leveling(
+//     'sasinovichmria@gmail.com, vladgurlenia@gmail.com, 1234567789@gmail.com',
+//   ),
+// );
+// //***************
+// function isString(str) {
+//   return typeof str === 'string';
+// }
+// console.log(isString('Mariya'));
+// //***********
+// function lightMail(url) {
+//   return url.replace(/#.*/, '');
+// }
+// console.log(lightMail('https//:google.com#nrefimdcmojl461616fw'));
+//
+//
+// function notRepet(str){
+//   const arr = str.split(' ');
+//   const newArr = arr.filter((elem, index, array) =>{
+//     return array.indexOf(elem)=== index;
+//   });
+//   return newArr.join(' ');
+// }
+// console.log(notRepet('alfa betta betta gamma alfa alfa gamma betta'));
+//
+//
+// function getNickName(arr, value){
+//   return arr.indexOf(value);
+//
+// }
+// console.log(getNickName([0,1,2,7,8,7,3,4,5],5));
+//
+// function multiply(arr){
+//   const temp = [];
+//   const newArr = arr.map((el, i) => {
+//     return temp.concat(new Array(i+1).fill(el));
+//   });
+//     console.log(newArr);
+//    return newArr.flat();
+// }
+// console.log(multiply(['a','b','c',null]));
+//
+// function bigNum(arr){
+//   return arr.sort((a,b) => b-a ).slice(0,3);
+// }
+// console.log(bigNum([7,2,10,5,4,6,1,8,9,3]));
+//
+// function countPositiv(arr){
+//  const positivArr = arr.filter(el => el>0);
+//   return positivArr.length;
+//
+// }
+// console.log(countPositiv([null,1,'elephant',-5, 8]));
