@@ -45,19 +45,17 @@ function deepEqual(object1, object2) {
     return false;
   }
 
-  for (let i = 0; i < arrKey1.length; i++) {
-    if (arrKey2.includes(arrKey1[i]) === false) {
+  for (const key in object1){
+    if (!(key in object2)){
       return false;
     }
-  }
-
-  for (let i = 0; i < arrKey1.length; i++) {
-    if (typeof object1[arrKey1[i]] === 'object') {
-      return deepEqual(object1[arrKey1[i]], object2[arrKey1[i]]);
+    if (!deepEqual(object1[key], object2[key])){
+       return false;
     }
-    if (object1[arrKey1[i]] !== object2[arrKey2[i]]) {
-      return false;
-    }
+    // if (!deepEqual((object1[key])[key], (object2[key])[key])){
+    //   console.log((object1[key])[key]);
+    //   // return false;
+    // }
   }
 
   return true;
