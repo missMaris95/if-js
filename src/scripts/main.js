@@ -1,106 +1,93 @@
-//homework 5. Напишите функция deepEqual, которая сможет сравнивать 2 объекта с разными
-// уровнями вложенности. Например:
-const obj1 = {
-  a: 'a',
-  b: {
-    a: 'a',
-    b: 'b',
-    c: {
-      a: 1,
+const studentsData = [
+    {
+        firstName: 'Василий',
+        lastName: 'Петров',
+        admissionYear: 2019,
+        courseName: 'Java',
     },
-  },
-};
-const obj2 = {
-  b: {
-    c: {
-      a: 1,
+    {
+        firstName: 'Иван',
+        lastName: 'Иванов',
+        admissionYear: 2018,
+        courseName: 'JavaScript',
     },
-    b: 'b',
-    a: 'a',
-  },
-  a: 'a',
-};
-const obj3 = {
-  a: {
-    c: {
-      a: 'a',
+    {
+        firstName: 'Александр',
+        lastName: 'Федоров',
+        admissionYear: 2017,
+        courseName: 'Python',
     },
-    b: 'b',
-    a: 'a',
-  },
-  b: 'b',
-};
-
-function deepEqual(object1, object2) {
-  const isObject =(x) => x && typeof x === 'object';
-  const isNull = (x)=> x ===null;
-
-  let result = true;
-  const unitedObjs = {...object1, ...object2};
-
-  if (isNull(object1) || isNull(object2)){
-    result = false;
-  } else{
-    for (const key in unitedObjs){
-      if (isObject(object1[key]) || isObject(object2[key])) {
-        result = deepEqual(object1[key] || {}, object2[key] || {});
-      } else {
-        result = Boolean(object1[key] === object2[key]);
-      }
+    {
+        firstName: 'Николай',
+        lastName: 'Петров',
+        admissionYear: 2019,
+        courseName: 'Android',
+    },
+];
+class User {
+    constructor({firstName, lastName}) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
-  }
-  return result;
+    get fullName(){
+        return `${this.firstName} ${this.lastName}`;
+    }
 }
-console.log(deepEqual(obj1, obj2));
-console.log(deepEqual(obj1, obj3));
-//***************************************
+
+const user1 = new User({
+    firstName: 'Mariya',
+    lastName: 'Hurlenia',
+});
+
+console.log(user1);
+
+
+class Student extends User{
+    constructor({admissionYear, courseName, ...props }) {
+        super(props);
+        this.admissionYear = admissionYear;
+        this.courseName=courseName;
+    }
+    get course(){
+        return 2024-this.admissionYear;
+    }
+}
+
+const student = new Student({
+    firstName: 'Maria',
+    lastName: 'Hurlen',
+    admissionYear: 2021,
+    courseName:'JavaScript',
+});
+console.log(student);
+
+
+class Students{
+    constructor(students) {
+        this.students = students;
+    }
+    sortArr(){
+        return this.students.sort((a, b) => b.admissionYear-a.admissionYear)
+            .map(student => `${student.firstName} ${student.lastName} - ${student.courseName}, ${student.course =2024-student.admissionYear} курс`);
+    }
+
+    // sortArr(){
+    //     return this.students.sort((a, b) => b.admissionYear-a.admissionYear)
+    //      .map(student => `${user1.fullName} - ${student.courseName}, ${student.course} курс`);
+    // }
+
+}
+
+const students = new Students(studentsData);
+
+console.log(students.sortArr());
 
 
 
-//**********************************************
-//Эта функция показывает что в Obj1 есть каие либо свойства********
-// function isEmpty(object1){
-//   for (const key in object1){
-//     console.log(key);
-//       return false;
-//   }
-//   return  true;
-// }
-// console.log(isEmpty(object1));
-//*************************************************************
-// let result1 =[];
-// arr1.forEach(key => result1 +=key);
-// console.log(result1);
 
-// let result2 =[];
-// arr2.forEach(key => result2 +=key);
-// console.log(result2);
 
-//найти сумму значений*****************************
-// const salaries = {
-//   John: 100,
-//   Ann: 160,
-//   Pete: 130,
-// };
-//
-// let sum = 0;
-// for (let key in salaries){
-//   sum += salaries[key];
-// }
-// console.log(sum);
 
-//******************************************************
-// let men = {
-//   width: 200,
-//   height: 300,
-//   title: "My menu",
-// };
-//
-// function multiplyNumeric(obj) {
-//   for(let key in obj){
-//     if (typeof obj[key] == 'number'){
-//        console.log(obj[key] *=2);
-//     }
-//   }
-// }
-// console.log(multiplyNumeric(men));
+
+
+
+
