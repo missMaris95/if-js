@@ -97,3 +97,32 @@ function fourCards(arr) {
 }
 
 console.log(fourCards(data));
+
+//*************************************
+
+//**************************************
+// String.prototype.toJadenCase = function () {
+//   return  this.split(' ').map(el => el.charAt(0).toUpperCase() + el.slice(1)).join('');
+//
+//
+// };
+// console.log(String.prototype.toJadenCase('How can mirrors be real if our eyes real'));
+
+//******************************
+// const stringToNumber = function(str){
+//   if (typeof str === 'string'){
+//     return Number(str);
+//   }
+//   // str = Number(str);
+//
+//   return null;
+// };
+// console.log(stringToNumber('1344'));
+
+//***********************
+function positiveSum(arr) {
+  const positivesArr = arr.filter(el => el>0);
+  return positivesArr.reduce((acc, item) => acc+item,0);
+}
+
+console.log(positiveSum([1,-4,7,12]));
