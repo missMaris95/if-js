@@ -99,7 +99,12 @@ function fourCards(arr) {
 console.log(fourCards(data));
 
 //*************************************
-
+const searchPeopleEl = document.querySelector('.discovery-search__people');
+const openSearchList = () => {
+  const searchListsEl = document.querySelector('.search-lists-non');
+  searchListsEl.classList.toggle('search-lists');
+};
+searchPeopleEl.addEventListener('click', openSearchList);
 //**************************************
 // String.prototype.toJadenCase = function () {
 //   return  this.split(' ').map(el => el.charAt(0).toUpperCase() + el.slice(1)).join('');
@@ -121,8 +126,8 @@ console.log(fourCards(data));
 
 //***********************
 function positiveSum(arr) {
-  const positivesArr = arr.filter(el => el>0);
-  return positivesArr.reduce((acc, item) => acc+item,0);
+  const positivesArr = arr.filter((el) => el > 0);
+  return positivesArr.reduce((acc, item) => acc + item, 0);
 }
 
-console.log(positiveSum([1,-4,7,12]));
+console.log(positiveSum([1, -4, 7, 12]));
