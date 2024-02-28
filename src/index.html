@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,6 +28,9 @@
             fill="#ffffff"
             d="M20 0C8.96 0 0 8.96 0 20s8.96 20 20 20 20-8.96 20-20S31.04 0 20 0Zm0 6c3.32 0 6 2.68 6 6s-2.68 6-6 6-6-2.68-6-6 2.68-6 6-6Zm0 28.4c-5 0-9.42-2.56-12-6.44.06-3.98 8-6.16 12-6.16 3.98 0 11.94 2.18 12 6.16-2.58 3.88-7 6.44-12 6.44Z"
           />
+        </symbol>
+        <symbol id="arrow-children" viewBox="0 0 10 7">
+          <path d="M1.175 0L5 3.86302L8.825 0L10 1.18927L5 6.25L0 1.18927L1.175 0Z" fill="#3077C6"/>
         </symbol>
         <symbol id="google-play" viewBox="0 0 135 40">
           <path
@@ -302,6 +305,7 @@
           <p class="title-name">Hotel name</p>
           <p class="title-check">Check-in — Check-out</p>
         </div>
+
         <div class="discovery-search fon">
           <div class="discovery-search__nw">
             <p class="text">New York</p>
@@ -310,34 +314,93 @@
             <p class="text">Tue 15 Sept — Sat 19 Sept</p>
           </div>
           <div id="search-people" class="discovery-search__people">
-            <p class="text">2 Adults — 0 Children — 1 Room</p>
+<!--            <p class="text">2 Adults — 0 Children — 1 Room</p>-->
 
-            <ul class="search-lists-non search-lists">
-              <li id="" class="search-list">
-                <p class="text search-text">Adults</p>
-                <div class="search-numb">
-                  <div class="search-kube">-</div>
-                  <div class="search-number">0</div>
-                  <div class="search-kube">+</div>
+
+            <div class="forms-adults">
+              <span class="text form-adults form-adults__input" id="adults" >2</span>
+                <label class="text form-adults form-adults__label" for="adults">Adults-</label>
+            </div>
+
+            <div class="forms-children">
+              <span class="text form-children form-children__input" id="children" >0</span>
+                <label class="text form-children form-children__label" for="children">Children-</label>
+            </div>
+
+            <div class="forms-rooms">
+              <span class="text form-rooms form-rooms__input"  id="rooms" >1</span>
+              <label class="text form-rooms form-rooms__label" for="rooms">Rooms</label>
+            </div>
+
+            <ul class=" search-lists">
+              <li class="search-list">
+                <p class="text">Adults</p>
+                <div>
+                  <button class="counters-button negative-adults ">-</button>
+                  <p class="text count-adults" id="adults-count">0</p>
+                  <button class="counters-button positive-adults ">+</button>
                 </div>
               </li>
-              <li id="" class="search-list">
-                <p class="text search-text">Children</p>
-                <div class="search-numb">
-                  <div class="search-kube">-</div>
-                  <div class="search-number">0</div>
-                  <div class="search-kube">+</div>
+
+              <li class="search-list">
+                <p class="text">Children</p>
+                <div>
+                  <button class="counters-button negative-children ">-</button>
+                  <p class="text count-children"  id="children-count">0</p>
+                  <button class="counters-button positive-children ">+</button>
                 </div>
               </li>
-              <li id="" class="search-list">
-                <p class="text search-text">Rooms</p>
-                <div class="search-numb">
-                  <div class="search-kube">-</div>
-                  <div class="search-number">0</div>
-                  <div class="search-kube">+</div>
+
+              <li class="search-list">
+                <p class="text">Rooms</p>
+                <div>
+                  <button class="counters-button negative-rooms ">-</button>
+                  <p class="text count-rooms" id="rooms-count" >0</p>
+                  <button class="counters-button positive-rooms ">+</button>
                 </div>
+              </li>
+
+              <li class="more-info-children">
+                <p class="info-children">What is the age of the child you’re travelling with?</p>
+
+                <p class="age-children"></p>
+
+
+
               </li>
             </ul>
+<!--            <div class="more-info-children">-->
+<!--              <p class="info-children">What is the age of the child you’re travelling with?</p>-->
+<!--              <p class="age-children">8 years old</p>-->
+<!--            </div>-->
+
+
+<!--            <ul class=" search-lists">-->
+<!--              <li class="search-list">-->
+<!--                <p class="text search-text">Adults</p>-->
+<!--                <div class="counters">-->
+<!--                  <button class="counters-button button-negative ">-</button>-->
+<!--                  <div class="button-number"><input class="button-number" type="text" value="0" disabled></div>-->
+<!--                  <button class="counters-button button-positive ">+</button>-->
+<!--                </div>-->
+<!--              </li>-->
+<!--              <li class="search-list">-->
+<!--                <p class="text search-text">Children</p>-->
+<!--                <div class="counters">-->
+<!--                  <button class="counters-button button-negative ">-</button>-->
+<!--                  <div class="button-number">0</div>-->
+<!--                  <button class="counters-button button-positive  ">+</button>-->
+<!--                </div>-->
+<!--              </li>-->
+<!--              <li class="search-list">-->
+<!--                <p class="text search-text">Rooms</p>-->
+<!--                <div class="counters">-->
+<!--                  <button class="counters-button button-negative ">-</button>-->
+<!--                  <div class="button-number"><input class="button-number" type="text" value="0" disabled></div>-->
+<!--                  <button class="counters-button button-positive ">+</button>-->
+<!--                </div>-->
+<!--              </li>-->
+<!--            </ul>-->
           </div>
           <button class="discovery__bottom" type="submit">Search</button>
         </div>

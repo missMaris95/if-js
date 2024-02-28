@@ -1,110 +1,169 @@
-const data = [
-  {
-    id: '71ce9eac-e9b9-44f0-a342-9ff0b565f3b7',
-    name: 'Hotel Leopold',
-    city: 'Saint Petersburg',
-    country: 'Russia',
-    imageUrl:
-      'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-leopold_mflelk.jpg',
-  },
-  {
-    id: 'aa560608-a879-48a7-80b6-deff2806b250',
-    name: 'Apartment Sunshine',
-    city: 'Santa  Cruz de Tenerife',
-    country: 'Spain',
-    imageUrl:
-      'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/apartment-sunshine_vhdlel.jpg',
-  },
-  {
-    id: '1d88fefe-edf1-4cda-844a-babbf29bb2b3',
-    name: 'Villa Kunerad',
-    city: 'Vysokie Tatry',
-    country: 'Slowakia',
-    imageUrl:
-      'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/villa-kunerad_gdbqgv.jpg',
-  },
-  {
-    id: 'a2bf824d-edd8-41f0-8b70-244334086ab4',
-    name: 'Hostel Friendship',
-    city: 'Berlin',
-    country: 'Germany',
-    imageUrl:
-      'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/hostel-friendship_aw6tn7.jpg',
-  },
-  {
-    id: '4024535d-a498-4274-b7cb-f01ada962971',
-    name: 'Radisson Blu Hotel',
-    city: 'Kyiv',
-    country: 'Ukraine',
-    imageUrl:
-      'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/radisson-blu-hotel_jwtowg.jpg',
-  },
-  {
-    id: 'e51e71f6-6baf-4493-b3ae-25dc27cdc238',
-    name: 'Paradise Hotel',
-    city: 'Guadalupe',
-    country: 'Mexico',
-    imageUrl:
-      'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/paradise-hotel_i6whae.jpg',
-  },
-  {
-    id: '87d2b966-2431-43f3-8c0d-2c8723474dfc',
-    name: 'Hotel Grindewald',
-    city: 'Interlaken',
-    country: 'Switzerland',
-    imageUrl:
-      'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-grindewald_zsjsmy.jpg',
-  },
-  {
-    id: '190221c6-b18f-4dba-97de-e35f0e14c023',
-    name: 'The Andaman Resort',
-    city: 'Port Dickson',
-    country: 'Malaysia',
-    imageUrl:
-      'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/the-andaman-resort_d2xksj.jpg',
-  },
-];
 
-const newList = document.querySelector('.homes__row');
-console.log(newList);
-function fourCards(arr) {
-  const firstFourHotel = arr.slice(0, 4);
-  for (let i = 0; i < firstFourHotel.length; i++) {
-    const newElList = document.createElement('li');
-    console.log(newElList);
-    newElList.setAttribute('class', 'item-homes');
-    newList.appendChild(newElList);
+//при нажатии выплыл счетчик
+const searchPeopleEl = document.getElementById('search-people');
+searchPeopleEl.addEventListener('click', () => {
+  document.querySelector('.search-lists').style.display = 'block';
+});
+//****************************   цвет кнопок +-   ******
+const counterButtonEl = document.querySelectorAll('.counters-button');
+counterButtonEl.forEach(but => {
+  but.addEventListener('click', () => {
+    but.style.color = 'var(--accent-blue)';
+    but.style.borderTop = '1px solid var(--accent-blue)';
+    but.style.borderLeft = '1px solid var(--accent-blue)';
+  });
+});
 
-    const newImgEl = document.createElement('img');
-    newImgEl.setAttribute('class', 'item-homes__icon');
-    newImgEl.setAttribute('src', arr[i].imageUrl);
-    console.log(newImgEl);
-    newElList.appendChild(newImgEl);
 
-    const hotelEl = document.createElement('p');
-    hotelEl.setAttribute('class', 'item-name');
-    hotelEl.textContent = arr[i].name;
-    // const cont = document.createTextNode(arr[i].name);
-    // hotelEl.appendChild(cont);
-    newElList.appendChild(hotelEl);
+const positiveAdultsEl = document.querySelector('.positive-adults');
+const negativeAdultsEl = document.querySelector('.negative-adults');
+const adultsStringEl = document.getElementById('adults');//строка
+const adultsEl = document.getElementById('adults-count');//всплывающий блок
 
-    const countryEl = document.createElement('p');
-    countryEl.setAttribute('class', 'item-homes__country');
-    countryEl.textContent = `${arr[i].city}, ${arr[i].country}`;
-    // countryEl.textContent = arr[i].city + ',' + arr[i].country;
-    newElList.appendChild(countryEl);
+let value1 = 0;
+function calcAdults() {
+  adultsStringEl.textContent = value1;
+  adultsEl.textContent = value1;
+}
+//счетчик для кол-ва взрослых
+positiveAdultsEl.addEventListener('click', function (){
+  if (value1<30) {
+    value1 += 1;
+    calcAdults();
   }
+});
+
+negativeAdultsEl.addEventListener('click', function (){
+  if (value1>1) {
+    value1 -= 1;
+    calcAdults();
+  }
+});
+ //счетчик для кол-ва детей
+const positiveChildrenEl = document.querySelector('.positive-children');
+const negativeChildrenEl = document.querySelector('.negative-children');
+const childrenStringEl = document.getElementById('children');//строка
+const childrenEl = document.getElementById('children-count');//всплываю
+
+let value2 = 0;
+function calcChildren() {
+  childrenStringEl.textContent = value2;
+  childrenEl.textContent = value2;
+}
+positiveChildrenEl.addEventListener('click', function (){
+  if (value2<10) {
+    value2 += 1;
+    calcChildren();
+  }
+});
+
+// negativeChildrenEl.addEventListener('click', function (){
+//   if (value2>0) {
+//     value2 -= 1;
+//     calcChildren();
+//   }
+// });
+
+//доп окошко для ребенка
+const infoChildrenEl = document.querySelector('.more-info-children');
+
+positiveChildrenEl.addEventListener('click',  () => {
+  infoChildrenEl.classList.add('show-info-children');
+});
+
+// селектор для выбора возраста ребенка
+const selectAgeEl = document.querySelector('.age-children');
+// let age =0;
+function addSelect(){
+  const selectEl = document.createElement('select');
+  selectEl.style.border = '1px solid var(--accent-blue)';
+  selectEl.style.margin = '12px 0';
+  selectEl.style.padding = '5px';
+  selectEl.style.outline = 'none';
+
+  for (let i = 0; i<18; i++){
+    const optionEl = document.createElement('option');
+    optionEl.value= i;
+    optionEl.textContent= `${i} age old`;
+    selectEl.appendChild(optionEl);
+  }
+  selectAgeEl.appendChild(selectEl);
 }
 
-console.log(fourCards(data));
+positiveChildrenEl.addEventListener('click', ()=>{
+  if (value2>1){
+    value2 +=1;
+    infoChildrenEl.classList.add('show-info-children');//????
+  }
+  addSelect();
+});
+negativeChildrenEl.addEventListener('click', () =>{
+  // calcChildren();
+  if (value2 > 0){
+    value2 -=1;
+    calcChildren();
+    selectAgeEl.removeChild(selectAgeEl.lastChild);
 
-//*************************************
-const searchPeopleEl = document.querySelector('.discovery-search__people');
-const openSearchList = () => {
-  const searchListsEl = document.querySelector('.search-lists-non');
-  searchListsEl.classList.toggle('search-lists');
-};
-searchPeopleEl.addEventListener('click', openSearchList);
+  }
+  if (value2 === 0){
+    infoChildrenEl.classList.remove('show-info-children');//??????
+    // calcChildren();
+  }
+
+
+
+});
+
+// selectAgeEl.addEventListener('click', ()=>{
+//   if (value<10){
+//     value +1;
+//   }
+// });
+
+
+
+//счетчик для кол-ва комнат
+const positiveRoomsEl = document.querySelector('.positive-rooms');
+const negativeRoomsEl = document.querySelector('.negative-rooms');
+const roomsStringEl = document.getElementById('rooms');//строка
+const roomsEl = document.getElementById('rooms-count');//всплываю
+
+let value3 = 0;
+function calcRooms() {
+  roomsStringEl.textContent = value2;
+  roomsEl.textContent = value2;
+}
+positiveRoomsEl.addEventListener('click', function (){
+  if (value3<10) {
+    value3 += 1;
+    calcRooms();
+  }
+});
+
+negativeRoomsEl.addEventListener('click', function (){
+  if (value3>0) {
+    value3 -= 1;
+    calcRooms();
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //**************************************
 // String.prototype.toJadenCase = function () {
 //   return  this.split(' ').map(el => el.charAt(0).toUpperCase() + el.slice(1)).join('');
@@ -125,9 +184,10 @@ searchPeopleEl.addEventListener('click', openSearchList);
 // console.log(stringToNumber('1344'));
 
 //***********************
-function positiveSum(arr) {
-  const positivesArr = arr.filter((el) => el > 0);
-  return positivesArr.reduce((acc, item) => acc + item, 0);
-}
+// function positiveSum(arr) {
+//   const positivesArr = arr.filter((el) => el > 0);
+//   return positivesArr.reduce((acc, item) => acc + item, 0);
+// }
+//
+// console.log(positiveSum([1, -4, 7, 12]));
 
-console.log(positiveSum([1, -4, 7, 12]));
