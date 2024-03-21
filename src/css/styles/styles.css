@@ -39,14 +39,14 @@
   max-width: 1440px;
   width: 100%;
   padding: 0 104px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .top-section {
   display: flex;
   flex-direction: column;
   height: 900px;
-  background-image: url("../images/fons.jpg");
+  background-image: url('../images/fons.jpg');
   background-repeat: no-repeat;
 }
 
@@ -160,33 +160,22 @@
   position: relative;
 }
 
-
-
-
-
-
 .forms-adults,
 .forms-children,
-.forms-rooms{
+.forms-rooms {
   display: flex;
   position: relative;
   top: 4px;
 }
 
-
-
-
-.form-adults__input, .form-children__input, .form-rooms__input {
+.form-adults__input,
+.form-children__input,
+.form-rooms__input {
   outline: none;
-  margin:  0 4px;
+  margin: 0 4px;
   max-width: 19px;
   border: none;
 }
-
-
-
-
-
 
 .discovery__bottom {
   grid-column: 4;
@@ -242,7 +231,7 @@
   justify-content: space-between;
 }
 
-.search-list div{
+.search-list div {
   display: flex;
 }
 
@@ -251,14 +240,12 @@
 /*  align-items: center;*/
 /*}*/
 
-
-
 .negative-adults,
 .positive-adults,
 .negative-children,
 .positive-children,
 .negative-rooms,
-.positive-rooms{
+.positive-rooms {
   border: 1px solid var(--secondary-text);
   background-color: var(--color-white);
   color: var(--secondary-text);
@@ -270,7 +257,9 @@
   font-size: 18px;
 }
 
-.count-adults, .count-children, .count-rooms {
+.count-adults,
+.count-children,
+.count-rooms {
   display: flex;
   outline: none;
   margin: 0 19px;
@@ -294,26 +283,21 @@
   line-height: 1.15;
 }
 
-
 .show-info-children {
   display: block;
 }
 
-.info-children{
+.info-children {
   margin-top: 6px;
 }
 
-.age-list{
-
+.age-list {
 }
 
-.age-children{
- display: flex;
+.age-children {
+  display: flex;
   justify-content: space-between;
 }
-
-
-
 
 .discovery-content__media {
   display: none;
@@ -321,7 +305,7 @@
 
 .block-apps {
   display: flex;
-  margin: 120px auto ;
+  margin: 120px auto;
   justify-content: space-between;
   width: 280px;
   height: 40px;
