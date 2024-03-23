@@ -398,21 +398,20 @@
   position: relative;
 }
 
-.item-homes {
-  display: grid;
-  grid-auto-flow: row;
-  grid-template: auto 1fr minmax(60px, auto) / 1fr;
-  row-gap: 24px;
-}
+/*.item-homes {*/
+/*  display: grid;*/
+/*  grid-auto-flow: row;*/
+/*  grid-template: auto 1fr minmax(60px, auto) / 1fr;*/
+/*  row-gap: 24px;*/
+/*}*/
 
 .item-homes__icon {
-  position: relative;
-}
-
-.item-homes__icon img {
+  /* max-width: 100px; */
   width: 100%;
   height: 100%;
   object-fit: cover;
+  max-height: 296px;
+  /* position: relative; */
 }
 
 .item-name {
@@ -422,6 +421,7 @@
 }
 
 .item-homes__country {
+  margin: 16px 0;
   font-size: 24px;
   line-height: 1.2;
   color: var(--secondary-text);

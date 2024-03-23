@@ -1,4 +1,41 @@
 //probno
+fetch('https://if-student-api.onrender.com/api/hotels/popular')
+  .then((response) => response.json())
+  .then((arr) => {
+    const newCardsEl = document.querySelector('.homes__row');
+    // newCardsEl.classList.add('homes__row');
+
+    for (let i = 0; i < 4; i++) {
+      const newCardEl = document.createElement('li');
+      newCardEl.setAttribute('class', 'ítem-homes');
+      newCardsEl.appendChild(newCardEl);
+
+      const imgEl = document.createElement('img');
+      imgEl.setAttribute('src', arr[i].imageUrl);
+      imgEl.classList.add('item-homes__icon');
+      newCardEl.appendChild(imgEl);
+
+      const nameEl = document.createElement('h3');
+      nameEl.textContent = arr[i].name;
+      nameEl.classList.add('item-name');
+      newCardEl.appendChild(nameEl);
+
+      const countryEl = document.createElement('div');
+      countryEl.classList.add('item-homes__country');
+      countryEl.textContent = `${arr[i].city} ${arr[i].country}`;
+      newCardEl.appendChild(countryEl);
+
+      newCardEl.appendChild(nameEl);
+    }
+    // return newCardsEl;
+    console.log(newCardsEl);
+
+    // arr.forEach(el => el===4);
+  })
+  .catch((err) => {
+    console.log('Fetch Error :-S', err);
+  });
+
 //при нажатии выплыл счетчик
 const searchPeopleEl = document.getElementById('search-people');
 searchPeopleEl.addEventListener('click', () => {
@@ -20,10 +57,12 @@ const adultsStringEl = document.getElementById('adults'); //строка
 const adultsEl = document.getElementById('adults-count'); //всплывающий блок
 
 let value1 = 0;
+
 function calcAdults() {
   adultsStringEl.textContent = value1;
   adultsEl.textContent = value1;
 }
+
 //счетчик для кол-ва взрослых
 positiveAdultsEl.addEventListener('click', function () {
   if (value1 < 30) {
@@ -45,10 +84,12 @@ const childrenStringEl = document.getElementById('children'); //строка
 const childrenEl = document.getElementById('children-count'); //всплываю
 
 let value2 = 0;
+
 function calcChildren() {
   childrenStringEl.textContent = value2;
   childrenEl.textContent = value2;
 }
+
 positiveChildrenEl.addEventListener('click', function () {
   if (value2 < 10) {
     value2 += 1;
@@ -72,6 +113,7 @@ positiveChildrenEl.addEventListener('click', () => {
 
 // селектор для выбора возраста ребенка
 const selectAgeEl = document.querySelector('.age-children');
+
 // let age =0;
 function addSelect() {
   const selectEl = document.createElement('select');
@@ -122,10 +164,12 @@ const roomsStringEl = document.getElementById('rooms'); //строка
 const roomsEl = document.getElementById('rooms-count'); //всплываю
 
 let value3 = 0;
+
 function calcRooms() {
   roomsStringEl.textContent = value2;
   roomsEl.textContent = value2;
 }
+
 positiveRoomsEl.addEventListener('click', function () {
   if (value3 < 10) {
     value3 += 1;
