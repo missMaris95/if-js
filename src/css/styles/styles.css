@@ -318,16 +318,20 @@
   height: 40px;
 }
 
-
 /* block available */
-.available{
+.available-toggle {
+  /*display: flex;*/
+  /*background-color: var(--bg-color);*/
+  /*flex-direction: column;*/
+}
+
+.available {
   display: none;
   background-color: var(--bg-color);
-  /*display: flex;*/
   flex-direction: column;
 }
 
-.available__row{
+.available__row {
   margin: 105px auto;
   display: grid;
   grid-template-columns: repeat(4, minmax(156px, 296px));
@@ -348,7 +352,6 @@
   line-height: 1.2;
   color: var(--secondary-text);
 }
-
 
 /*бЛОК OFFER*/
 
