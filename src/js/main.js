@@ -1,9 +1,64 @@
-//probno
+//lesson-13
+
+const inputCountry = document.querySelector('.input-country');
+const bottomSearch = document.querySelector('.discovery-search');
+const newCardsEl = document.querySelector('.available__row');
+const available = document.querySelector('.available');
+
+const clickOnBottom = async (event) => {
+  event.preventDefault();
+  inputCountry.value;
+  inputCountry.focus();
+
+  await fetch(
+    ` https://if-student-api.onrender.com/api/hotels?search=${inputCountry.value}`,
+  ).then((response) => {
+    if (!response.ok) {
+      throw new Error(`${response.status} - ${response.statusText}`);
+    }
+    return response
+      .json()
+
+      .then((arr) => {
+        for (let i = 1; i < 5; i++) {
+          console.log(arr);
+          const newCardEl = document.createElement('li');
+          newCardEl.setAttribute('class', 'ítem-available');
+          newCardsEl.appendChild(newCardEl);
+
+          const imgEl = document.createElement('img');
+          imgEl.setAttribute('src', arr[i].imageUrl);
+          imgEl.classList.add('item-available__icon');
+          newCardEl.appendChild(imgEl);
+
+          const nameEl = document.createElement('h3');
+          nameEl.textContent = arr[i].name;
+          nameEl.classList.add('item-name');
+          newCardEl.appendChild(nameEl);
+
+          const countryEl = document.createElement('div');
+          countryEl.classList.add('item-available__country');
+          countryEl.textContent = `${arr[i].city} ${arr[i].country}`;
+          newCardEl.appendChild(countryEl);
+
+          available.style.display = 'flex';
+        }
+        console.log(newCardsEl);
+      })
+
+      .catch((err) => {
+        console.log('Error', err.message);
+      });
+  });
+};
+
+bottomSearch.addEventListener('click', clickOnBottom);
+
+// // lesson - 12;
 fetch('https://if-student-api.onrender.com/api/hotels/popular')
   .then((response) => response.json())
   .then((arr) => {
     const newCardsEl = document.querySelector('.homes__row');
-    // newCardsEl.classList.add('homes__row');
 
     for (let i = 0; i < 4; i++) {
       const newCardEl = document.createElement('li');
@@ -24,19 +79,14 @@ fetch('https://if-student-api.onrender.com/api/hotels/popular')
       countryEl.classList.add('item-homes__country');
       countryEl.textContent = `${arr[i].city} ${arr[i].country}`;
       newCardEl.appendChild(countryEl);
-
-      newCardEl.appendChild(nameEl);
     }
-    // return newCardsEl;
     console.log(newCardsEl);
-
-    // arr.forEach(el => el===4);
   })
   .catch((err) => {
     console.log('Fetch Error :-S', err);
   });
 
-//при нажатии выплыл счетчик
+// //при нажатии выплыл счетчик
 const searchPeopleEl = document.getElementById('search-people');
 searchPeopleEl.addEventListener('click', () => {
   document.querySelector('.search-lists').style.display = 'block';
@@ -63,6 +113,7 @@ function calcAdults() {
   adultsEl.textContent = value1;
 }
 
+//lesson-11
 //счетчик для кол-ва взрослых
 positiveAdultsEl.addEventListener('click', function () {
   if (value1 < 30) {
@@ -97,13 +148,6 @@ positiveChildrenEl.addEventListener('click', function () {
   }
 });
 
-// negativeChildrenEl.addEventListener('click', function (){
-//   if (value2>0) {
-//     value2 -= 1;
-//     calcChildren();
-//   }
-// });
-
 //доп окошко для ребенка
 const infoChildrenEl = document.querySelector('.more-info-children');
 
@@ -114,7 +158,6 @@ positiveChildrenEl.addEventListener('click', () => {
 // селектор для выбора возраста ребенка
 const selectAgeEl = document.querySelector('.age-children');
 
-// let age =0;
 function addSelect() {
   const selectEl = document.createElement('select');
   selectEl.style.border = '1px solid var(--accent-blue)';
@@ -139,23 +182,15 @@ positiveChildrenEl.addEventListener('click', () => {
   addSelect();
 });
 negativeChildrenEl.addEventListener('click', () => {
-  // calcChildren();
   if (value2 > 0) {
     value2 -= 1;
     calcChildren();
     selectAgeEl.removeChild(selectAgeEl.lastChild);
   }
   if (value2 === 0) {
-    infoChildrenEl.classList.remove('show-info-children'); //??????
-    // calcChildren();
+    infoChildrenEl.classList.remove('show-info-children');
   }
 });
-
-// selectAgeEl.addEventListener('click', ()=>{
-//   if (value<10){
-//     value +1;
-//   }
-// });
 
 //счетчик для кол-ва комнат
 const positiveRoomsEl = document.querySelector('.positive-rooms');

@@ -311,14 +311,19 @@
 
         <div class="discovery-search fon">
           <div class="discovery-search__nw">
-            <p class="text">New York</p>
+            <label for="text" class="text"></label>
+            <input
+              id="text"
+              type="text"
+              value="New York"
+              class="input-country"
+              required
+            />
           </div>
           <div class="discovery-search__data">
             <p class="text">Tue 15 Sept — Sat 19 Sept</p>
           </div>
           <div id="search-people" class="discovery-search__people">
-            <!--            <p class="text">2 Adults — 0 Children — 1 Room</p>-->
-
             <div class="forms-adults">
               <span class="text form-adults form-adults__input" id="adults"
                 >2</span
@@ -386,37 +391,6 @@
                 <p class="age-children"></p>
               </li>
             </ul>
-            <!--            <div class="more-info-children">-->
-            <!--              <p class="info-children">What is the age of the child you’re travelling with?</p>-->
-            <!--              <p class="age-children">8 years old</p>-->
-            <!--            </div>-->
-
-            <!--            <ul class=" search-lists">-->
-            <!--              <li class="search-list">-->
-            <!--                <p class="text search-text">Adults</p>-->
-            <!--                <div class="counters">-->
-            <!--                  <button class="counters-button button-negative ">-</button>-->
-            <!--                  <div class="button-number"><input class="button-number" type="text" value="0" disabled></div>-->
-            <!--                  <button class="counters-button button-positive ">+</button>-->
-            <!--                </div>-->
-            <!--              </li>-->
-            <!--              <li class="search-list">-->
-            <!--                <p class="text search-text">Children</p>-->
-            <!--                <div class="counters">-->
-            <!--                  <button class="counters-button button-negative ">-</button>-->
-            <!--                  <div class="button-number">0</div>-->
-            <!--                  <button class="counters-button button-positive  ">+</button>-->
-            <!--                </div>-->
-            <!--              </li>-->
-            <!--              <li class="search-list">-->
-            <!--                <p class="text search-text">Rooms</p>-->
-            <!--                <div class="counters">-->
-            <!--                  <button class="counters-button button-negative ">-</button>-->
-            <!--                  <div class="button-number"><input class="button-number" type="text" value="0" disabled></div>-->
-            <!--                  <button class="counters-button button-positive ">+</button>-->
-            <!--                </div>-->
-            <!--              </li>-->
-            <!--            </ul>-->
           </div>
           <button class="discovery__bottom" type="submit">Search</button>
         </div>
@@ -464,6 +438,12 @@
           </svg>
         </div>
       </header>
+
+      <section class="container available">
+        <h2 class="homes-title title">Available hotels</h2>
+        <ul class="available__row"></ul>
+      </section>
+
       <section class="container offer">
         <div class="offer__header">
           <h2 class="offer-title title">What do we offer</h2>
@@ -509,39 +489,6 @@
         <ul class="homes__row"></ul>
       </section>
 
-      <!--  <section class="container homes">-->
-      <!--    <div class="homes__header">-->
-      <!--      <h2 class="homes-title title">Homes guests loves</h2>-->
-      <!--    </div>-->
-      <!--    <div class="homes__row">-->
-      <!--      <div class="item-homes">-->
-      <!--        <div class="item-homes__icon">-->
-      <!--          <img src="./css/images/hotel.jpg" alt="hotel" />-->
-      <!--        </div>-->
-      <!--        <div class="item-name">Hotel Leopold</div>-->
-      <!--        <div class="item-homes__country">Saint Petersburg, Russia</div>-->
-      <!--      </div>-->
-      <!--      <div class="item-homes">-->
-      <!--        <div class="item-homes__icon">-->
-      <!--          <img src="./css/images/apartments.jpg" alt="apartments" />-->
-      <!--        </div>-->
-      <!--        <div class="item-name">Apartment Sunshine</div>-->
-      <!--        <div class="item-homes__country">Santa Cruz de Tenerife, Spain</div>-->
-      <!--      </div>-->
-      <!--      <div class="item-homes item-property">-->
-      <!--        <div class="item-homes__icon">-->
-      <!--          <img src="./css/images/villa.jpg" alt="villa" />-->
-      <!--        </div>-->
-      <!--        <div class="item-name">Villa Kunerad</div>-->
-      <!--        <div class="item-homes__country">Vysokie Tatry, Slowakia</div>-->
-      <!--      </div>-->
-      <!--      <div class="item-homes item-property">-->
-      <!--        <div class="item-homes__icon">-->
-      <!--          <img src="./css/images/hostel.jpg" alt="hostel" />-->
-      <!--        </div>-->
-      <!--        <div class="item-name">Hostel Friendship</div>-->
-      <!--        <div class="item-homes__country">Berlin, Germany</div>-->
-      <!--      </div>-->
       <!--      <div class="arrow-homes arrow-design">-->
       <!--        <div class="arrow-homes__icon">-->
       <!--          <svg class="arrow__icon-arrow">-->
@@ -549,8 +496,6 @@
       <!--          </svg>-->
       <!--        </div>-->
       <!--      </div>-->
-      <!--    </div>-->
-      <!--  </section>-->
       <section class="container destinations">
         <div class="destinations__header">
           <h2 class="destinations__title title">The best destinations</h2>
